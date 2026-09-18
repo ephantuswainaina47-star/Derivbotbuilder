@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DForge - AI $2 Service Fee</title>
+<title>botforge - AI $2 Service Fee</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
@@ -12,162 +12,81 @@ body{background:#070A14;color:#fff;min-height:100vh}
 .page{display:none}.page.active{display:block}
 .side{position:fixed;left:-320px;top:0;width:300px;height:100vh;background:#0A0D1F;border-right:1px solid #1A2142;z-index:100;transition:0.32s;display:flex;flex-direction:column;overflow-y:auto}
 .side.open{left:0}
-.side-top{padding:16px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;gap:12px;align-items:center}
-.side-menu{padding:10px;flex:1}
-.side-item{height:44px;display:flex;align-items:center;gap:12px;padding:0 10px;border-radius:10px;color:#8B91A8;font-size:14px;cursor:pointer;margin:2px 0}
-.side-item.active{background:linear-gradient(90deg,rgba(139,92,246,0.18),rgba(59,130,246,0.12));border:1px solid rgba(139,92,246,0.25);color:#fff}
-.si-icon{width:32px;height:32px;background:#151A33;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px}
-.side-bottom{padding:14px;border-top:1px solid rgba(255,255,255,0.06)}
-.copy{font-size:12px;text-align:center;padding:14px 0 8px}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:90;display:none}.overlay.show{display:block}
 .create-purple{width:100%;height:46px;background:linear-gradient(90deg,#7C3AED,#A855F7);border:0;border-radius:22px;color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 0;cursor:pointer}
 .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
 .stat-card{background:linear-gradient(180deg,#121632,#0F1229);border:1px solid #1E264E;border-radius:14px;padding:12px}
 .stat-label{font-size:10px;font-weight:700;color:#8B91A8}
 .stat-value{font-size:20px;font-weight:800;margin-top:6px}
-.empty-state{background:linear-gradient(180deg,#121632,#0F1229);border:1px dashed #2D3560;border-radius:18px;padding:24px 16px;margin-top:12px;text-align:center}
 .login{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:76vh;text-align:center}
-.login-icon{width:64px;height:64px;background:linear-gradient(135deg,#3B2A7A,#1E2150);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;border:1px solid #2D3560;margin-bottom:16px}
 .login-btn{width:100%;max-width:320px;background:#FF444F;color:#fff;border:0;padding:14px;border-radius:28px;font-weight:700;cursor:pointer;margin-top:18px}
 .create-box{background:#0F1229;border:1px solid #1E264E;border-radius:18px;padding:16px;margin-top:12px}
 .inp{width:100%;padding:12px;background:#151A33;border:1px solid #1E264E;border-radius:10px;color:#fff;margin:6px 0;outline:none;font-size:13px}
 .btn{width:100%;background:linear-gradient(90deg,#7C3AED,#6366F1);border:0;padding:12px;border-radius:28px;color:#fff;font-weight:700;cursor:pointer;margin-top:12px}
 .card{background:#101636;border:1px solid #1E264E;border-radius:14px;padding:12px;margin-top:10px}
-.rec-badge{display:inline-flex;background:linear-gradient(90deg,#7C3AED,#EC4899);padding:4px 10px;border-radius:16px;font-size:10px;font-weight:700;position:relative;top:-10px;left:12px}
-.ai-card{border:1px solid rgba(139,92,246,0.3);border-radius:18px;background:linear-gradient(180deg,#171336,#12102A);padding:14px;position:relative;margin-bottom:12px}
-.manual-card{border:1px solid #1E264E;border-radius:18px;background:#111631;padding:14px;margin-bottom:12px}
-.price-tag{background:#DDD6FE;color:#6D28D9;padding:3px 8px;border-radius:10px;font-size:11px;font-weight:800;margin-left:6px}
-.ai-btn{width:100%;height:44px;background:linear-gradient(90deg,#7C3AED,#EC4899);border:0;border-radius:12px;color:#fff;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px}
-.manual-btn{width:100%;height:44px;background:#3B82F6;border:0;border-radius:12px;color:#fff;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px}
-.pay-modal{position:fixed;inset:0;background:rgba(0,0,0,0.88);backdrop-filter:blur(10px);z-index:200;display:none;align-items:center;justify-content:center;padding:12px}
-.pay-modal.show{display:flex}
-.pay-box{width:100%;max-width:420px;background:#0F1229;border:1px solid #2D3560;border-radius:18px;padding:16px;max-height:90vh;overflow-y:auto}
-.pay-opt{border:1px solid #1E264E;border-radius:12px;padding:12px;margin:8px 0;background:#151A33;cursor:pointer}
-.pay-opt.active{border-color:#22C55E;background:rgba(34,197,94,0.1)}
-.pay-opt2{border:1px solid #1E264E;border-radius:12px;padding:12px;margin:8px 0;background:#151A33;cursor:pointer}
-.pay-opt2.active{border-color:#3B82F6;background:rgba(59,130,246,0.1)}
-.feature-card{background:linear-gradient(180deg,#171C3A,#121632);border:1px solid #1E264E;border-radius:18px;padding:16px;margin-top:12px}
-.domain-check-box{background:#0D1126;border:1px solid #1E264E;border-radius:12px;padding:12px;margin-top:10px}
 </style></head><body>
 <div class="nav"><div class="menu-btn" onclick="openSide()">☰</div><div class="logo">DForge</div><div style="width:36px"></div></div>
 <div class="overlay" id="overlay" onclick="closeSide()"></div>
-<div class="side" id="side">
-<div class="side-top"><div style="width:34px;height:34px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:800;font-size:10px">DF</div><div><div style="font-size:18px;font-weight:800;background:linear-gradient(90deg,#A78BFA,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">DForge</div><div style="font-size:8px;color:#6B7280">TRADING PLATFORM</div></div></div>
-<div class="side-menu">
-<div class="side-item active" data-p="sites" onclick="go('sites')"><div class="si-icon">🌐</div>Sites</div>
-<div class="side-item" data-p="comm" onclick="go('comm')"><div class="si-icon">💲</div>Commissions</div>
-<div class="side-item" data-p="earn" onclick="go('earn')"><div class="si-icon">💼</div>Earnings - $0.00 New</div>
-<div class="side-item" data-p="editor" onclick="go('editor')"><div class="si-icon">✏️</div>Website Editor</div>
-<div class="side-item" data-p="domains" onclick="go('domains')"><div class="si-icon">🔗</div>Domains</div>
-<div class="side-item" data-p="settings" onclick="go('settings')"><div class="si-icon">⚙️</div>Settings</div>
-</div>
-<div class="side-bottom"><div class="side-item" onclick="logout()"><div class="si-icon">↪️</div>Sign Out</div><div class="copy">© 2025 DForge</div></div>
-</div>
+<div class="side" id="side"><div style="padding:16px"><div class="logo">DForge</div></div>
+<div style="padding:10px"><div style="padding:10px;cursor:pointer" onclick="go('sites')">🌐 Sites</div><div style="padding:10px;cursor:pointer" onclick="go('earn')">💼 Earnings $0.00</div><div style="padding:10px;cursor:pointer" onclick="logout()">Sign Out</div></div></div>
 
 <div class="main">
-<div id="p-login" class="page active"><div class="login"><div class="login-icon">🌐</div><h1 style="font-size:28px;font-weight:800"><span style="background:linear-gradient(90deg,#8B5CF6,#C4B5FD);-webkit-background-clip:text;-webkit-text-fill-color:transparent">DForge</span></h1><button class="login-btn" onclick="login()">Login with Deriv</button></div></div>
+<div id="p-login" class="page active"><div class="login"><div style="font-size:48px">🌐</div><h1 style="font-size:28px;font-weight:800;margin-top:10px"><span style="background:linear-gradient(90deg,#8B5CF6,#C4B5FD);-webkit-background-clip:text;-webkit-text-fill-color:transparent">DForge</span></h1><p style="color:#8B91A8;font-size:12px;margin-top:8px">New website - $0.00 - Haven't earned yet</p><button class="login-btn" onclick="login()">Login with Deriv</button><p style="margin-top:10px;font-size:10px;color:#555">AppID: 34qCChiFFikX0UuadvfXq</p></div></div>
 
 <div id="p-sites" class="page">
-<div style="display:flex;gap:10px;align-items:center"><div style="width:40px;height:40px;background:linear-gradient(135deg,#8B5CF6,#6366F1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px">🌐</div><div><div style="font-size:22px;font-weight:800">Your Sites</div><div style="color:#8B91A8;font-size:11px">Manage and deploy your sites</div></div></div>
+<div style="display:flex;gap:10px;align-items:center"><div style="width:40px;height:40px;background:linear-gradient(135deg,#8B5CF6,#6366F1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px">🌐</div><div><div style="font-size:22px;font-weight:800">Your Sites</div><div style="color:#8B91A8;font-size:11px">Manage and deploy - New website 0 sites</div></div></div>
 <button class="create-purple" onclick="go('pick')">+ Create Site ✨</button>
 <div class="stats-grid">
-<div class="stat-card"><div class="stat-label">🌐 TOTAL SITES</div><div class="stat-value" id="totalSites">0</div></div>
-<div class="stat-card"><div class="stat-label" style="color:#22C55E">📈 DEPLOYED</div><div class="stat-value" id="deployedCount" style="color:#22C55E">0</div></div>
-<div class="stat-card"><div class="stat-label" style="color:#EAB308">📝 DRAFTS</div><div class="stat-value">0</div></div>
-<div class="stat-card"><div class="stat-label" style="color:#A78BFA">📈 THIS MONTH</div><div class="stat-value" id="thisMonth">0</div></div>
+<div class="stat-card"><div class="stat-label">TOTAL SITES</div><div class="stat-value" id="totalSites">0</div></div>
+<div class="stat-card"><div class="stat-label" style="color:#22C55E">DEPLOYED</div><div class="stat-value" style="color:#22C55E">0</div></div>
+<div class="stat-card"><div class="stat-label" style="color:#EAB308">DRAFTS</div><div class="stat-value">0</div></div>
+<div class="stat-card"><div class="stat-label">THIS MONTH</div><div class="stat-value">0</div></div>
 </div>
-<div id="list"></div>
-</div>
-
-<div id="p-pick" class="page">
-<div style="display:flex;gap:8px;align-items:center;margin-bottom:12px"><span onclick="go('sites')" style="cursor:pointer;font-size:20px">←</span><b>Create New Site - Choose</b></div>
-<div class="ai-card"><div class="rec-badge">⭐ Recommended - $2.00 Service Fee is HERE in AI</div><div style="display:flex;gap:10px;align-items:center"><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#4F2A8A,#5B2FB8);display:flex;align-items:center;justify-content:center;font-size:18px">✨</div><div><div style="display:flex;align-items:center"><b>AI Assistance</b><span class="price-tag">$2.00 Service Fee</span></div><div style="color:#8B91A8;font-size:11px">Service fee $2.00 is HERE in AI Assistance - That's where its 2 dollars</div></div></div><div style="color:#A1A8C3;font-size:11px;margin-top:8px">That's where its 2 dollars - Service fee $2.00 ONLY in AI Assistance - User pays $2.00 to get AI built site automatically + branding + logo + WhatsApp alert to 0710844216</div><button class="ai-btn" onclick="go('ai-assistant')">Start AI Assistance → $2.00 Service Fee HERE</button></div>
-<div class="manual-card"><div style="display:flex;gap:10px;align-items:center"><div style="width:44px;height:44px;border-radius:12px;background:#1E2A4A;display:flex;align-items:center;justify-content:center;font-size:18px">⚙️</div><div><b>Manual Setup</b><div style="color:#22C55E;font-size:11px">100% FREE - No service fee - No $2.00 here</div></div></div><div style="color:#8B91A8;font-size:11px;margin-top:8px">Manual is FREE - No $2.00 fee here - Earn via 3% markup 80% to you</div><button class="manual-btn" onclick="go('create')">Start Manual Setup → FREE No $2 Fee</button></div>
+<div id="list" style="margin-top:12px;background:linear-gradient(180deg,#121632,#0F1229);border:1px dashed #2D3560;border-radius:18px;padding:24px;text-align:center;color:#8B91A8">No sites yet - New website $0.00</div>
 </div>
 
-<div id="p-ai-assistant" class="page">
-<div style="display:flex;gap:8px;align-items:center;margin-bottom:12px"><span onclick="go('pick')" style="cursor:pointer;font-size:20px">←</span><b>AI Assistance - $2.00 Service Fee HERE</b></div>
-<div class="create-box">
-<div style="background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:12px"><b style="font-size:13px">💲 That's where its 2 dollars - Service Fee $2.00 ONLY HERE in AI Assistance</b><br><small style="font-size:10px;color:#A78BFA">Service fee $2.00 is ONLY inside AI Assistance flow - Manual Setup is 100% FREE - That's where its 2 dollars goes to M-Pesa 0710844216 hidden + USDT TNowMzymiRxqGdqoWL12XjfMfAGFzsfTRQ + WhatsApp alert to 0710844216</small></div>
-<input class="inp" id="ai-q2" placeholder="Site name e.g. KitTraders">
-<input class="inp" id="ai-q3" placeholder="Domain e.g. kittraders.site">
-<button class="btn" style="background:#1E2A4A;border:1px solid #3B82F6" onclick="openDomainCheck()">🔍 Buy New Domain $4.44 Check Availability</button>
-<input class="inp" id="userPhone" placeholder="Your M-Pesa 0710... - STK push will come to YOUR number - $2.00 service fee" style="border:1px solid #22C55E;background:#0A1F15;margin-top:8px">
-<button class="ai-btn" onclick="openPay()">💳 Pay $2.00 Service Fee HERE in AI Assistance - Auto STK Prompt</button>
-<div style="margin-top:10px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:10px;padding:10px"><small style="font-size:10px;color:#22C55E">✅ That's where its 2 dollars - Service fee $2.00 ONLY in AI Assistance - Manual FREE - Earnings Hub $0.00 new website until first $2.00 service fee - Haven't earned from Payment Agent yet</small></div>
-</div>
+<div id="p-pick" class="page"><div onclick="go('sites')" style="cursor:pointer">← Back</div><h2 style="margin-top:10px">Choose</h2>
+<div class="card"><b>AI Assistance - $2.00 Service Fee HERE</b><br><small>That's where its 2 dollars - Only in AI</small><button class="btn" onclick="go('ai-assistant')">Start AI → $2.00</button></div>
+<div class="card"><b>Manual - FREE No $2 Fee</b><br><small>Manual is FREE</small><button class="btn" style="background:#3B82F6" onclick="go('create')">Start Manual → FREE</button></div>
 </div>
 
-<div id="p-create" class="page">
-<div style="display:flex;gap:8px;align-items:center;margin-bottom:12px"><span onclick="go('pick')" style="cursor:pointer;font-size:20px">←</span><b>Manual Setup - FREE - No $2 Fee Here</b></div>
-<div class="create-box">
-<div style="background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.25);border-radius:10px;padding:10px"><b style="font-size:12px;color:#22C55E">✅ 100% FREE - No $2.00 fee - No service fee in Manual - That's NOT where its 2 dollars</b><br><small style="font-size:10px;color:#8B91A8">Manual is FREE - Service fee $2.00 is ONLY in AI Assistance - That's where its 2 dollars - Here you earn via 3% markup 80% to you</small></div>
-<label style="font-size:11px;font-weight:600;margin-top:10px;display:block">Domain *</label><input class="inp" id="dom" placeholder="kittraders.site">
-<label style="font-size:11px;font-weight:600;margin-top:10px;display:block">Site Name *</label><input class="inp" id="sn" placeholder="KitTraders">
-<div style="margin-top:10px"><div style="display:flex;justify-content:space-between"><span style="font-size:11px;font-weight:600">Commission Markup</span><span style="color:#8B5CF6;font-weight:700;font-size:11px" id="mv2">2.5%</span></div><input type="range" id="mr2" min="0" max="3" step="0.1" value="2.5" oninput="document.getElementById('mv2').innerText=this.value+'%'" style="width:100%;margin-top:6px;accent-color:#8B5CF6"></div>
-<button class="btn" onclick="createSite()">Create FREE Site (No $2 Fee) →</button>
-</div>
+<div id="p-ai-assistant" class="page"><div onclick="go('pick')" style="cursor:pointer">← Back</div><h2>AI Assistance - $2.00 HERE</h2><div class="create-box"><input class="inp" id="ai-q2" placeholder="Site name"><input class="inp" id="userPhone" placeholder="M-Pesa 0710... - $2.00"><button class="btn" onclick="alert('M-Pesa STK to 0710844216 - $2.00 - That is where its 2 dollars')">Pay $2.00 HERE</button></div></div>
+<div id="p-create" class="page"><div onclick="go('pick')" style="cursor:pointer">← Back</div><h2>Manual FREE</h2><div class="create-box"><input class="inp" id="dom" placeholder="Domain"><input class="inp" id="sn" placeholder="Site Name"><button class="btn" onclick="createSite()">Create FREE</button></div></div>
+<div id="p-earn" class="page"><h2>Earnings $0.00</h2><div class="card">New website $0.00 - Haven't earned yet - That's where its 2 dollars in AI</div></div>
 </div>
 
-<div id="p-comm" class="page"><h2>💲 Commissions</h2><div class="card" style="background:#0A1F15;border-color:#14532D"><small style="color:#22C55E">📱 WhatsApp ON 0710844216<br>💰 M-Pesa 0710844216 hidden - Service fee $2 ONLY in AI Assistance<br>💎 USDT TNowMzymiRxqGdqoWL12XjfMfAGFzsfTRQ hidden<br>New website $0.00 - That's where its 2 dollars in AI</small></div><div id="txList"></div></div>
+<script>
+const APP_ID='34qCChiFFikX0UuadvfXq';
+const REDIRECT='https://derivbotbuilder-cgrv.vercel.app/';
+function login(){
+ // FIXED LOGIN - Will now respond
+ window.location.href='https://oauth.deriv.com/oauth2/authorize?app_id='+APP_ID;
+}
+function go(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ const el=document.getElementById('p-'+id);
+ if(el) el.classList.add('active');
+ closeSide();
+}
+function openSide(){document.getElementById('side').classList.add('open');document.getElementById('overlay').classList.add('show')}
+function closeSide(){document.getElementById('side').classList.remove('open');document.getElementById('overlay').classList.remove('show')}
+function logout(){localStorage.clear();go('login')}
+function createSite(){alert('Manual FREE Site Created - No $2 Fee - New website 0→1 - $0.00 earnings');go('sites')}
 
-<div id="p-earn" class="page">
-<h2>💼 Earnings Hub - $0.00 New Website</h2><p style="color:#6B7280;font-size:11px;margin-top:4px">New website - $0.00 - Haven't earned from Payment Agent yet - Service fee $2 ONLY in AI Assistance</p>
-<div class="card" style="text-align:center"><div style="display:flex;gap:10px;justify-content:center"><div><small style="color:#6B7280">TOTAL</small><div style="font-weight:800;font-size:18px">$0.00</div></div><div><small style="color:#6B7280">PENDING</small><div style="font-weight:800;font-size:18px">$0.00</div></div><div><small style="color:#6B7280">PAID OUT</small><div style="font-weight:800;font-size:18px">$0.00</div></div></div><div style="font-size:10px;color:#6B7280;margin-top:6px">New website - Haven't earned from Payment Agent yet - $0.00 - That's where its 2 dollars in AI Assistance will make $0.00 → $2.00</div></div>
-<div class="card"><div style="font-weight:700;font-size:12px">EARNING STREAMS - ALL $0.00 NEW</div>
-<div style="margin-top:8px;background:#0F1229;border-radius:10px;padding:10px"><b style="font-size:11px">Payment Agent</b><div style="font-weight:800;margin-top:4px">$0.00</div><small style="font-size:9px;color:#6B7280">0 transactions - Haven't earned from Payment Agent yet new website</small></div>
-<div style="margin-top:8px;background:#0F1229;border-radius:10px;padding:10px"><b style="font-size:11px">Service Fees - $2.00 ONLY in AI Assistance - That's where its 2 dollars</b><div style="font-weight:800;margin-top:4px;color:#22C55E" id="serviceFeeEarn">$0.00</div><small style="font-size:9px;color:#6B7280" id="serviceFeeCount">0 AI sites - $0.00 new - Manual FREE no fee - That's where its 2 dollars in AI Assistance</small></div>
-</div>
-</div>
-
-<div id="p-editor" class="page"><h2>✏️ Website Editor</h2><div class="feature-card"><h3>Editor - From Video</h3><p style="color:#8B91A8;font-size:11px">All tabs: Themes, Basic Info, App ID 337Xtxpf8o2P74cGAJeJAa, Trading Engine, etc</p></div></div>
-<div id="p-domains" class="page"><h2>🔗 Domains - $4.44</h2><div class="feature-card"><button class="btn" onclick="openDomainCheck()">Buy Domain $4.44 Check</button></div></div>
-<div id="p-settings" class="page"><h2>⚙️ Settings</h2><div class="card">Account: <span id="acc">-</span><br><br><b>That's where its 2 dollars:</b><br>Service fee $2.00 ONLY in AI Assistance<br>Manual Setup 100% FREE No fee<br>M-Pesa: 0710844216 hidden - ONLY in AI flow<br>USDT: TNowMzymiRxqGdqoWL12XjfMfAGFzsfTRQ hidden<br>WhatsApp: 0710844216<br>Earnings $0.00 new - Haven't earned from Payment Agent yet<br>App ID: 34qCChiFFikX0UuadvfXq</div></div>
-<div id="p-tutorials" class="page"><h2>🎓 Tutorials</h2></div>
-<div id="p-updates" class="page"><h2>📰 Updates - Service fee $2 ONLY in AI Assistance</h2></div>
-<div id="p-deploy" class="page"><h2>🚀 Deployments - 0 new</h2></div>
-<div id="p-ann" class="page"><h2>📢 Announcements</h2></div>
-<div id="p-xml" class="page"><h2>🤖 XML Bots</h2></div>
-<div id="p-ai-gen" class="page"><h2>✨ AI Bot Generator</h2></div>
-<div id="p-signals" class="page"><h2>⚡ AI Signals</h2></div>
-<div id="p-store" class="page"><h2>🛍️ Bot Store</h2></div>
-<div id="p-support" class="page"><h2>🎧 Support 0710844216</h2></div>
-</div>
-
-<div class="pay-modal" id="payModal"><div class="pay-box">
-<div style="display:flex;justify-content:space-between"><b>AI Assistance - $2.00 Service Fee HERE</b><span onclick="closePay()" style="cursor:pointer;font-size:18px">✕</span></div>
-<div style="background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:10px;padding:8px;margin-top:8px"><small style="font-size:10px;color:#A78BFA"><b>💲 That's where its 2 dollars - Service Fee $2.00 ONLY HERE in AI Assistance</b><br>Manual is 100% FREE - This $2.00 fee is ONLY in AI Assistant flow</small></div>
-<div style="color:#8B91A8;font-size:10px;margin-top:8px">Your M-Pesa: <b id="showPhone" style="color:#fff">07...</b> • Domain: <b id="showDomain" style="color:#fff"></b> • Fee ONLY in AI</div>
-<div class="pay-opt active" id="opt-mpesa" onclick="selectMethod('mpesa')">
-<div style="display:flex;justify-content:space-between"><b>📱 M-Pesa Auto STK - $2.00 - That's where its 2 dollars</b><span style="background:#22C55E;color:#fff;padding:2px 6px;border-radius:8px;font-size:9px">ONLY AI</span></div>
-<div style="font-size:10px;color:#8B91A8;margin-top:4px">Service fee $2.00 ONLY in AI Assistance - That's where its 2 dollars - You enter YOUR number → STK → KES 260 to hidden 0710844216</div>
-<div id="mpesaDetail" style="margin-top:8px">
-<div style="background:#070A14;border:1px dashed #22C55E;border-radius:10px;padding:8px;text-align:center">
-<div style="font-size:10px;color:#8B91A8">STK Push will be sent to YOUR number - $2.00 ONLY in AI Assistance</div><div id="mpesaToPhone" style="font-weight:800;color:#22C55E;font-size:14px">07...</div>
-<div style="font-size:9px;color:#5A6180;margin-top:2px">KES 260 ($2.00) Service Fee - ONLY HERE in AI - Manual FREE - To 0710844216 hidden • WhatsApp ON • Earnings $0.00 → $2.00</div>
-</div>
-<button class="ai-btn" id="stkBtn" onclick="sendStk()" style="background:linear-gradient(90deg,#22C55E,#16A34A)">📲 Send M-Pesa Prompt $2.00 - That's where its 2 dollars - To My Phone</button>
-<div id="stkStatus" style="display:none;text-align:center;margin-top:8px;font-size:11px;color:#22C55E"></div>
-</div>
-</div>
-<div class="pay-opt2" id="opt-usdt" onclick="selectMethod('usdt')">
-<div style="display:flex;justify-content:space-between"><b>💎 USDT TRC20 - $2.00 - That's where its 2 dollars</b><span style="background:#3B82F6;color:#fff;padding:2px 6px;border-radius:8px;font-size:9px">ONLY AI</span></div>
-<div id="usdtDetail" style="display:none;margin-top:8px">
-<div style="background:#070A14;border:1px dashed #3B82F6;border-radius:10px;padding:8px">
-<div style="font-size:10px;color:#8B91A8">Send $2.00 USDT TRC20 - Service fee ONLY HERE in AI:</div>
-<div style="margin-top:6px;background:#0D1126;border-radius:6px;padding:6px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:10px;font-weight:700;color:#3B82F6;word-break:break-all">TNowMzymiRxqGdqoWL12XjfMfAGFzsfTRQ</span><button onclick="copyUSDT()" style="background:#1E2A4A;border:0;padding:4px 8px;border-radius:6px;color:#fff;font-size:10px">Copy</button></div>
-</div>
-<button class="ai-btn" onclick="sendUsdt()" style="background:linear-gradient(90deg,#3B82F6,#6366F1)">💎 I Have Sent $2.00 - That's where its 2 dollars</button>
-</div>
-</div>
-<div id="verifyBox" style="display:none;margin-top:12px;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.25);border-radius:10px;padding:10px">
-<div style="font-size:11px;font-weight:700;color:#22C55E">✅ Verify $2.00 Service Fee - That's where its 2 dollars - ONLY AI + WhatsApp Alert</div>
-<input class="inp" id="txCode" placeholder="M-Pesa Code QH... or USDT TxID - $2.00 ONLY AI" style="margin-top:6px;border-color:#22C55E">
-<div style="font-size:9px;color:#8B91A8;margin-top:4px">Owner 0710844216 gets WhatsApp: "New $2.00 service fee (AI) - That's where its 2 dollars!" - Earnings $0.00 → $2.00</div>
-<button class="ai-btn" id="verifyBtn" onclick="confirmPay()">🚀 Verify $2.00 - That's where its 2 dollars - & Create Site</button>
-</div>
-</div></div>
-
-<div class="pay-modal" id="domainModal"><div class="pay-box">
-<div style="display:flex;justify-content:space-between"><b>Buy Domain $4.44</b><span onclick="closeDomainModal()" style="cursor:pointer;font-size:18px">✕</span></div>
-<div style="display:flex;gap:6px;margin-top:10px"><input class="inp" id="domainInput" placeholder="yourbrand.com" style="flex:1"><button class="btn" style="width:70px;margin-top:6px;height:38
+// Auto-login check - Parse Deriv token from URL
+(function(){
+ const qs=new URLSearchParams(window.location.search);
+ const t1=qs.get('token1'); const t2=qs.get('token'); const acct=qs.get('acct1')||qs.get('acct')||'CR';
+ const token=t1||t2;
+ if(token){
+  localStorage.setItem('deriv_token',token);
+  localStorage.setItem('deriv_login',acct);
+  window.history.replaceState({},'',REDIRECT);
+  go('sites');
+  return;
+ }
+ const saved=localStorage.getItem('deriv_token');
+ if(saved){ go('sites'); }
+})();
+</script>
+</body></html>
